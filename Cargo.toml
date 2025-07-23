@@ -1,0 +1,12 @@
+[package]
+name = "tdate"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+chrono = "0.4"
+chrono-tz = "0.8"
+geocoding = "0.4"
+tzf-rs = "0.4"
+astro = "2.0"
+clap = { version = "4.5", features = ["derive"] }

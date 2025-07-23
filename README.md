@@ -1,58 +1,69 @@
-# Thelemic Date Class for Python
+# tdate - Thelemic Date Calculator
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![GitHub Issues](https://img.shields.io/github/issues/LilithXara/ThelemicDate.svg)](https://github.com/LilithXara/ThelemicDate/issues)
-[![GitHub Stars](https://img.shields.io/github/stars/LilithXara/ThelemicDate.svg)](https://github.com/LilithXara/ThelemicDate/stargazers)
-
-
-Do what thou wilt shall be the whole of the Law. 
-
-Welcome to Thelemic Date Class for Python! This Python package allows you to work with Thelemic dates, providing methods to obtain the current Thelemic date or calculate a specific Thelemic date based on a given Gregorian date and time.
+A Rust implementation of the Thelemic Date system, providing current Thelemic date information including solar and lunar positions.
 
 ## Features
 
-- Get the current Thelemic date for a specific location.
-- Calculate a specific Thelemic date and time based on a given Gregorian date and time.
-- Easy to use and integrate into your Python projects.
+- Displays the current Thelemic date in the format: `☉ in Xº Sign : ☽ in Yº Sign : dies Day : Anno Year æræ legis`
+- Calculates precise solar and lunar positions using astronomical algorithms
+- Automatically determines timezone based on location
+- Uses the Thelemic calendar system (New Year begins at the vernal equinox)
 
-## Easy Installation
+## Installation
 
-pip install thelemic-date
+### Prerequisites
+- Rust 1.82 or later
+
+### Building from source
+
+```bash
+git clone https://github.com/JSKitty/tdate.git
+cd tdate
+cargo build --release
+```
+
+The executable will be available at `target/release/tdate`
 
 ## Usage
-To use the Thelemic Date Class, follow the examples below:
 
+```bash
+# Display current Thelemic date (default location: Las Vegas, NV)
+tdate
+
+# Display current date for a specific location
+tdate --location "London, UK"
+tdate -l "Tokyo, Japan"
+
+# Display a specific date and time
+tdate 2024 3 20 12 0 "New York, NY"
 ```
-from thelemic_date import ThelemicDate
 
-## Get the current Thelemic date for a specific location
-date_data = ThelemicDate()
-location = "Las Vegas, NV"
-current_date = date_data.now(location)
-print(current_date)
+### Options
 
-## Calculate a specific Thelemic date and time based on a given Gregorian date and time
-location = "Las Vegas, NV"
-year, month, day, hour, minute = 1976, 1, 13, 8, 25
-specific_day = date_data.in_day(year, month, day, hour, minute, location)
-print(specific_day)
+- `-h, --help` - Print help information
+- `-V, --version` - Print version information  
+- `-l, --location <LOCATION>` - Specify location for date calculation (e.g., "Las Vegas, NV")
+
+### Example output:
 ```
+☉ in 1º Leo : ☽ in 16º Cancer : dies Mercurii : Anno Vxi æræ legis
+```
+
+## Implementation Details
+
+This is a Rust port of the original Python implementation, maintaining exact 1:1 logic with the original while leveraging Rust's performance and type safety.
+
+The program uses the following crates:
+- `astro` - For astronomical calculations
+- `chrono` & `chrono-tz` - For date/time handling and timezone support
+- `geocoding` - For location-based timezone determination
+- `tzf-rs` - For timezone finding based on coordinates
+- `clap` - For command-line argument parsing
 
 ## License
-This project is licensed under the MIT License. For more information, please refer to the LICENSE file.
 
-## Issues
-If you encounter any issues or have suggestions for improvements, please feel free to open an issue. Your feedback is highly appreciated.
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
 
-## Contributing
-Contributions are welcome! If you would like to contribute to this project, please follow the guidelines in CONTRIBUTING.md.
+## Original Implementation
 
-## Acknowledgments
-This project was inspired by the principles and practices of Thelema. I also want to personally thank all of thoe on my discord server, http://discord.gg/agapethelema 
-
-## Contact
-For any inquiries or questions, please contact the project maintainer, Lilith Vala Xara, lvx@dream.am
-
-Love is the law, love under will.  
-
-Lilith 
+Based on the Python implementation by Lilith Vala Xara: https://github.com/LilithXara/ThelemicDate
