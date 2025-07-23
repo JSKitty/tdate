@@ -8,7 +8,7 @@ use clap::Parser;
 
 #[derive(Parser)]
 #[command(name = "tdate")]
-#[command(version = "0.1.0\n93 93/93\nDo what thou wilt shall be the whole of the Law.\nLove is the law, love under will.\n\nThanks to Lilith Vala Xara for the original implementation\nand JSKitty for the Rust port.")]
+#[command(version = "0.1.1\n93 93/93\nDo what thou wilt shall be the whole of the Law.\nLove is the law, love under will.\n\nThanks to Lilith Vala Xara for the original implementation\nand JSKitty for the Rust port.")]
 #[command(about = "Displays the current Thelemic date", long_about = None)]
 struct Cli {
     /// Location for date calculation (e.g., "Las Vegas, NV")
